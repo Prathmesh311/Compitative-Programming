@@ -41,7 +41,7 @@ public class Solution {
         {
             ramdomizedPivot(arr, left, right);
             int temp;
-            int pivot = arr[left];
+            int pivot = arr[left];                   // for simple algorithm directly take left as pivot instead of random pivoting 
             int j = left;
 
             for(int i=left+1; i <= right; i++)
