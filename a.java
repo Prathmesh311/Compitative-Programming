@@ -1,3 +1,11 @@
+       for(int i=0; i < s.length(); i++)
+        {
+            if(s.charAt(i) != '0' && s.charAt(i) != '1')
+            {
+                return 0;
+            }
+        }
+        
         int n = s.length();
         int maxPow = 0;
         
@@ -20,3 +28,4 @@
             s = subStr.valueOf(n-1) + subStr.substring(0, n-1);
         }
         return maxPow;
+
