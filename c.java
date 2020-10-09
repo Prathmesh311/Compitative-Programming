@@ -37,6 +37,36 @@ public class main {
                 ans.add("NO");
             }
         }
+        
+        // method 2
+        List<String> ans = new ArrayList<String>();
+
+        Set<Integer> setA = new HashSet<Integer>();
+        Set<Integer> setB = new HashSet<Integer>();
+        Set<Integer> setC = new HashSet<Integer>();
+
+        for(int i=0; i < colors.size(); i++)
+        {
+            setA.add(colors.get(i).get(0));
+            setB.add(colors.get(i).get(1));
+            setC.add(colors.get(i).get(2));
+        }
+
+        for(int i=0; i < queries.size(); i++)
+        {
+            int a = queries.get(i).get(0);
+            int b = queries.get(i).get(1);
+            int c = queries.get(i).get(2);
+
+            if(setA.contains(a) && setB.contains(b) && setC.contains(c))
+            {
+                ans.add("YES");
+            }
+            else
+            {
+                ans.add("NO");
+            }
+        }
 
         return ans;
     }
