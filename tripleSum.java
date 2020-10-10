@@ -11,14 +11,15 @@ public class Solution {
     // Complete the triplets function below.
     static long triplets(int[] a, int[] b, int[] c) {
 
-         Set<String> set = new HashSet<String>();
+        // METHOD 1
+         Set<String> set = new HashSet<String>();              // Brute force approach (much slower)
          Arrays.sort(a);
          Arrays.sort(b);
          Arrays.sort(c);
 
-         int triplets = 0;
+         Long triplets = 0;
 
-         for(int i=0; i < a.length; i++)
+         for(int i=0; i < a.length; i++)                        // iterating through all arrays and finding triplets
          {
              int valueA = a[i];
              int indexB = binarySearch(b, valueA, 0, b.length-1, 1);
@@ -48,8 +49,41 @@ public class Solution {
                  
              }
          }
+        
+        // METHOD 2                                                   
+        int[] arr = Arrays.stream(a).sorted().distinct().toArray();      // Arrays.stream() is Java8 function   
+        int[] brr = Arrays.stream(b).sorted().distinct().toArray();
+        int[] crr = Arrays.stream(c).sorted().distinct().toArray();
+        
+        // for Java7 use following method
+        HashSet<Integer> setA = new HashSet<Integer>();
+        for(int i=0; i < a.length(); i++)
+        {
+            setA.add(a[i]);
+        }
+        int i = 0
+        for(Integer x : setA)
+        {
+            A[i] = x;
+            i++;
+        }
+        Arrays.sort(A);
+        // End of Java7 specific method
+        
+        int x, y, z;
+        x = y = z = 0;
+        while(y < b.length) {
+            while(x < a.length && a[x] <= b[y])
+                x++;
 
-         return triplets;
+            while(z < c.length && c[z] <= b[y])
+                z++;
+
+            triplets += Long.valueOf(x) * z;
+            y++;
+        }
+
+        return triplets;
     }
 
     static int binarySearch(int[] arr,int value,int left,int right,int indicator)
@@ -138,3 +172,5 @@ public class Solution {
         scanner.close();
     }
 }
+
+
