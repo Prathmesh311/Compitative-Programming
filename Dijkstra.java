@@ -30,7 +30,7 @@ public class Dijkstra {
         pq.add(new Node(s, 0));                               // add source to priority queue
         distance[s] = 0;                                          // set distance of source == 0
 
-        while(!pq.isEmpty())                                      // continue unitl priority queue is not empty
+        while(!pq.isEmpty())                                     // continue unitl priority queue is not empty
         {
             Node node  = pq.remove();                             // remove min from queue
             int currNode = node.index;
