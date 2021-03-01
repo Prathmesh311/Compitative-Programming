@@ -5,33 +5,33 @@ public class Main
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		TravelAgencies[] A = new TravelAgencies[4];
+		TravelAgencies[] A = new TravelAgencies[1];
 		
-		for(int i=0; i < 4; i++)
+		for(int i=0; i < 1; i++)
 		{
 		    int regNo = sc.nextInt();
 		    String agencyName = sc.nextLine();
 		    String packageType = sc.nextLine();
 		    int price = sc.nextInt();
-		    boolean flightFacility = nextBoolean();
+		    boolean flightFacility = sc.nextBoolean();
 		    A[i] = new TravelAgencies(regNo, agencyName, packageType, price, flightFacility);
 		}
 		
 		int num = sc.nextInt();
-		String package = sc.nextLine();
+		String p = sc.nextLine();
 		
 		int maxPrice = findAgencyWithHighestpackagePrice(A);
 		System.out.println(maxPrice);
 		
-		TravelAgencies matchedAgency = agencyDetailForGivenIdAndType(A, num, package);
+		TravelAgencies matchedAgency = agencyDetailForGivenIdAndType(A, num, p);
 		if(matchedAgency == null)
 		{
 		    System.out.println("No such agencies");
 		}
 		else
 		{
-		    System.out.println(matchedAgency.getagencyName);
-		    System.out.println(matchedAgency.getprice);
+		    System.out.println(matchedAgency.getagencyName());
+		    System.out.println(matchedAgency.getprice());
 		}
 	}
 	
@@ -49,16 +49,17 @@ public class Main
 	    return max;
 	}
 	
-	public static TravelAgencies agencyDetailForGivenIdAndType(TravelAgencies[] A, int num, String package)
+	public static TravelAgencies agencyDetailForGivenIdAndType(TravelAgencies[] A, int num, String p)
 	{
 	    for(int i=0; i < A.length; i++)
 	    {
-	        if(A[i].getregNo() == num && A[i].getpackageType() == package && A[i].getflightFacilities() == true)
+	        if(A[i].getregNo() == num && A[i].getpackageType() == p && A[i].getflightFacilities())
 	        {
 	            return A[i];
 	        }
 	    }
-	}
+	    return null;
+    }
 }
 
 class TravelAgencies
@@ -120,3 +121,4 @@ class TravelAgencies
     }
     
 }
+
